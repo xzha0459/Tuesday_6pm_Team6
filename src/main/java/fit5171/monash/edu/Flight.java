@@ -93,14 +93,15 @@ public class Flight {
 
     public String toString()
     {
-            return "Flight{" + airplane.toString() +
-                    ", date to=" +  getDateTo() + ", " + '\'' +
-                    ", date from='" + getDateFrom() + '\'' +
-                    ", depart from='" + getDepartFrom() + '\'' +
-                    ", depart to='" + getDepartTo() + '\'' +
-                    ", code=" + getCode() + '\'' +
-                    ", company=" + getCompany() + '\'' +
-                    ", code=" + getCode() + '\'' +
-                    '}';
+        return "Flight{" +
+                "flightID=" + flightID +
+                ", departFrom='" + departFrom + '\'' +
+                ", departTo='" + departTo + '\'' +
+                ", code='" + code + '\'' +
+                ", company='" + company + '\'' +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", airplaneID=" + (airplane != null ? airplane.getAirplaneID() : "null") +
+                '}';
     }
 }
