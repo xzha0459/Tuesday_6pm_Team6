@@ -12,7 +12,7 @@ public class Passenger extends Person
 
     public Passenger(String firstName, String secondName, int age, String gender,String email, String phoneNumber, String passport, String cardNumber,int securityCode)
     {
-        super();
+        super(firstName, secondName, age, gender);
         this.securityCode=securityCode;
         this.cardNumber=cardNumber;
         this.passport=passport;

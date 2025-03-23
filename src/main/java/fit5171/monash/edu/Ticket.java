@@ -4,7 +4,7 @@ public class Ticket
     private int ticket_id;
     private int price;
     Flight flight;
-    private boolean classVip; //indicates if this is bussiness class ticket or not
+    private boolean classVip; //indicates if this is business class ticket or not
     private boolean status; //indicates status of ticket: if it is bought by someone or not
     Passenger passenger;
 
