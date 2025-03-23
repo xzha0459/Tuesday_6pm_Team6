@@ -1,12 +1,7 @@
+package fit5171.monash.edu;
 import static org.junit.jupiter.api.Assertions.*;
-
-import fit5171.monash.edu.Airplane;
-import fit5171.monash.edu.Flight;
-import fit5171.monash.edu.Passenger;
-import fit5171.monash.edu.Ticket;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 

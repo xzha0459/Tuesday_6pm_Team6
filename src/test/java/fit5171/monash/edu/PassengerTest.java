@@ -1,7 +1,5 @@
-
-
+package fit5171.monash.edu;
 import static org.junit.jupiter.api.Assertions.*;
-import fit5171.monash.edu.Passenger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
