@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e935be1-b259-49ad-a41f-457cdc467670" name="Changes" comment="modify file hierarchy" />
+    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="Finished TicketSystemTest class">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/TicketSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/TicketSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/FlightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/FlightTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,83 +26,47 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="jgao0062" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;jgao0062&quot;
+    &quot;assignee&quot;: &quot;tlii0106&quot;
   }
 }</component>
-  <component name="GitToolBoxStore">
-    <option name="recentBranches">
-      <RecentBranches>
-        <option name="branchesForRepo">
-          <list>
-            <RecentBranchesForRepo>
-              <option name="branches">
-                <list>
-                  <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1742734837" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="jgao0062" />
-                    <option name="lastUsedInstant" value="1742734836" />
-                  </RecentBranch>
-                </list>
-              </option>
-              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
-            </RecentBranchesForRepo>
-          </list>
-        </option>
-      </RecentBranches>
-    </option>
-  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/xzha0459/Tuesday_6pm_Team6.git&quot;,
-    &quot;accountId&quot;: &quot;70486376-558c-48e2-a863-35d748b626f9&quot;
+    &quot;accountId&quot;: &quot;9fb3e510-ff41-4e14-93e9-efde2f540e51&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2uTxJl6KmVqpIvYv4Hl0sOZCvyA" />
+  <component name="ProjectId" id="2uU1MToZIwTP3e8Llgyej0Js8w1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
-    <option name="sortByType" value="true" />
-    <option name="sortKey" value="BY_TYPE" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.PassengerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PassengerTest.testDefaultConstructor.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PassengerTest.testParameterizedConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TicketSystemTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TicketTest.executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Proofreading missing languages information&quot;: &quot;Proofreading missing languages information&quot;,
-    &quot;Notification.DoNotAsk-Proofreading missing languages information&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/IdeaProjects/Tuesday_6pm_Team6_2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -103,35 +75,18 @@
       <recent name="fit5171.monash.edu" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PassengerTest.testDefaultConstructor">
-    <configuration name="PassengerTest.testDefaultConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tuesday_6pm_Team6" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PassengerTest" />
-      <option name="METHOD_NAME" value="testDefaultConstructor" />
-      <option name="TEST_OBJECT" value="method" />
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Tuesday_6pm_Team6_2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PassengerTest.testParameterizedConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tuesday_6pm_Team6" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PassengerTest" />
-      <option name="METHOD_NAME" value="testParameterizedConstructor" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Tuesday_6pm_Team6_2" />
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.PassengerTest.testParameterizedConstructor" />
-        <item itemvalue="JUnit.PassengerTest.testDefaultConstructor" />
-        <item itemvalue="JUnit.PassengerTest.testDefaultConstructor" />
-        <item itemvalue="JUnit.PassengerTest.testParameterizedConstructor" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -144,126 +99,52 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e935be1-b259-49ad-a41f-457cdc467670" name="Changes" comment="" />
-      <created>1742286295577</created>
+      <changelist id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="" />
+      <created>1742288290611</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1742286295577</updated>
-      <workItem from="1742286296840" duration="1941000" />
-      <workItem from="1742618078277" duration="10904000" />
-      <workItem from="1742731240557" duration="88000" />
-      <workItem from="1742731608588" duration="2288000" />
+      <updated>1742288290611</updated>
+      <workItem from="1742288291853" duration="105000" />
+      <workItem from="1742524325712" duration="8742000" />
+      <workItem from="1742597653185" duration="18845000" />
+      <workItem from="1742641208619" duration="132000" />
+      <workItem from="1742734739181" duration="2395000" />
+      <workItem from="1742737391300" duration="648000" />
     </task>
-    <task id="LOCAL-00001" summary="Test Classes for Class Ticket and Passenger">
+    <task id="LOCAL-00001" summary="Fixed some errors in TicketSystem class">
       <option name="closed" value="true" />
-      <created>1742731136463</created>
+      <created>1742554713074</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1742731136463</updated>
+      <updated>1742554713074</updated>
     </task>
-    <task id="LOCAL-00002" summary="Test Classes for Class Ticket and Passenger">
+    <task id="LOCAL-00002" summary="Finished flight test class">
       <option name="closed" value="true" />
-      <created>1742732028524</created>
+      <created>1742627515929</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1742732028524</updated>
+      <updated>1742627515929</updated>
     </task>
-    <task id="LOCAL-00003" summary="Test Classes for Class Ticket and Passenger">
+    <task id="LOCAL-00003" summary="Finished TicketSystemTest class">
       <option name="closed" value="true" />
-      <created>1742732055333</created>
+      <created>1742640442633</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1742732055333</updated>
+      <updated>1742640442633</updated>
     </task>
-    <task id="LOCAL-00004" summary="Test Classes for Class Ticket and Passenger">
-      <option name="closed" value="true" />
-      <created>1742732100740</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1742732100740</updated>
-    </task>
-    <task id="LOCAL-00005" summary="modify file hierarchy">
-      <option name="closed" value="true" />
-      <created>1742732887304</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1742732887304</updated>
-    </task>
-    <task id="LOCAL-00006" summary="modify file hierarchy">
-      <option name="closed" value="true" />
-      <created>1742732923982</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1742732923982</updated>
-    </task>
-    <task id="LOCAL-00007" summary="modify file hierarchy">
-      <option name="closed" value="true" />
-      <created>1742732961853</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1742732961853</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="main" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="jgao0062" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="jgao0062" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test Classes for Class Ticket and Passenger" />
-    <MESSAGE value="modify file hierarchy" />
-    <MESSAGE value="Merge branch 'main' of https://github.com/xzha0459/Tuesday_6pm_Team6 into jgao0062&#10;&#10;# Conflicts:&#10;#&#9;.idea/vcs.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/fit5171/monash/edu/Passenger.java&#10;#&#9;src/main/java/fit5171/monash/edu/Ticket.java" />
-    <MESSAGE value="Unversioned files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unversioned files" />
+    <MESSAGE value="Fixed some errors in TicketSystem class" />
+    <MESSAGE value="Finished flight test class" />
+    <MESSAGE value="Finished TicketSystemTest class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished TicketSystemTest class" />
   </component>
 </project>
