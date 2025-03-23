@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e935be1-b259-49ad-a41f-457cdc467670" name="Changes" comment="modify file hierarchy" />
+    <list default="true" id="6e935be1-b259-49ad-a41f-457cdc467670" name="Changes" comment="try to push AirplaneTest to main">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/TicketSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/TicketSystem.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +72,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2uTxJl6KmVqpIvYv4Hl0sOZCvyA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -76,34 +80,34 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.PassengerTest.executor": "Run",
-    "JUnit.PassengerTest.testDefaultConstructor.executor": "Run",
-    "JUnit.PassengerTest.testParameterizedConstructor.executor": "Run",
-    "JUnit.TicketSystemTest.executor": "Run",
-    "JUnit.TicketTest.executor": "Run",
-    "Notification.DisplayName-DoNotAsk-Proofreading missing languages information": "Proofreading missing languages information",
-    "Notification.DoNotAsk-Proofreading missing languages information": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.PassengerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PassengerTest.testDefaultConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PassengerTest.testParameterizedConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TicketSystemTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TicketTest.executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Proofreading missing languages information&quot;: &quot;Proofreading missing languages information&quot;,
+    &quot;Notification.DoNotAsk-Proofreading missing languages information&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="fit5171.monash.edu" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.PassengerTest.testDefaultConstructor">
     <configuration name="PassengerTest.testDefaultConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tuesday_6pm_Team6" />
       <option name="PACKAGE_NAME" value="" />
@@ -264,6 +268,7 @@
     <MESSAGE value="modify file hierarchy" />
     <MESSAGE value="Merge branch 'main' of https://github.com/xzha0459/Tuesday_6pm_Team6 into jgao0062&#10;&#10;# Conflicts:&#10;#&#9;.idea/vcs.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/fit5171/monash/edu/Passenger.java&#10;#&#9;src/main/java/fit5171/monash/edu/Ticket.java" />
     <MESSAGE value="Unversioned files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unversioned files" />
+    <MESSAGE value="try to push AirplaneTest to main" />
+    <option name="LAST_COMMIT_MESSAGE" value="try to push AirplaneTest to main" />
   </component>
 </project>
