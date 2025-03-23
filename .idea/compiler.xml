@@ -10,5 +10,8 @@
         <module name="airline-reservation-system" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Tuesday_6pm_Team6" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

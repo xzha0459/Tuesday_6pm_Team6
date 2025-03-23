@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Basic unit tests for the Flight class.
- */
+
 public class FlightTest {
 
     private Flight flight;
@@ -26,9 +24,7 @@ public class FlightTest {
         airplane = new Airplane(200, "Boeing 737", 10, 100, 5);
     }
 
-    /**
-     * 01 - Test default fields with the no-arg constructor
-     */
+
     @Test
     void testDefaultConstructor() {
         // New Flight should have default/zero/null values
@@ -38,36 +34,28 @@ public class FlightTest {
         assertNull(flight.getDepartTo());
     }
 
-    /**
-     * 02 - Test setFlightID / getFlightID
-     */
+
     @Test
     void testSetAndGetFlightID() {
         flight.setFlightID(FLIGHT_ID);
         assertEquals(FLIGHT_ID, flight.getFlightID());
     }
 
-    /**
-     * 03 - Test setDepartFrom / getDepartFrom
-     */
+
     @Test
     void testSetAndGetDepartFrom() {
         flight.setDepartFrom(DEPART_FROM);
         assertEquals(DEPART_FROM, flight.getDepartFrom());
     }
 
-    /**
-     * 04 - Test setDepartTo / getDepartTo
-     */
+
     @Test
     void testSetAndGetDepartTo() {
         flight.setDepartTo(DEPART_TO);
         assertEquals(DEPART_TO, flight.getDepartTo());
     }
 
-    /**
-     * 05 - Test setAirplane / getAirplane
-     */
+
     @Test
     void testSetAndGetAirplane() {
         flight.setAirplane(airplane);
@@ -76,9 +64,7 @@ public class FlightTest {
         assertEquals("Boeing 737", flight.getAirplane().getAirplaneModel());
     }
 
-    /**
-     * 06 - Test changing Flight data mid-test
-     */
+
     @Test
     void testModifyFlightData() {
         flight.setFlightID(300);
@@ -90,9 +76,7 @@ public class FlightTest {
         assertEquals("Perth", flight.getDepartTo());
     }
 
-    /**
-     * 07 - Test if we can handle reassigning airplane
-     */
+
     @Test
     void testReassignAirplane() {
         // Assign first airplane
@@ -108,18 +92,14 @@ public class FlightTest {
         assertEquals("Airbus A320", flight.getAirplane().getAirplaneModel());
     }
 
-    /**
-     * 08 - Null reference test
-     */
+
     @Test
     void testSetAirplaneToNull() {
         flight.setAirplane(null);
         assertNull(flight.getAirplane());
     }
 
-    /**
-     * 09 - ToString test
-     */
+
     @Test
     void testToString() {
         flight.setFlightID(FLIGHT_ID);
