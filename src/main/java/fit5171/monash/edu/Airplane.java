@@ -3,41 +3,34 @@ package fit5171.monash.edu;
 import java.util.*;
 
 /**
- * Airplane class
- * - 每排 7 个座位，行号 A-J
- * - 支持头等舱、经济舱、机组座
+ * - 7 seats per row, rows labeled A–J
+ * - Business, economy, and crew seats
  */
 public class Airplane {
-    private int airplaneID;               // 飞机编号，必须大于 0
-    private String airplaneModel;         // 飞机型号，非空
+    private int airplaneID;
+    private String airplaneModel;
+    private int businessSeatsNumber;
+    private int economySeatsNumber;
+    private int crewSeatsNumber;
 
-    private int businessSeatsNumber;      // 头等舱座位数
-    private int economySeatsNumber;       // 经济舱座位数
-    private int crewSeatsNumber;          // 机组座位数
+    private List<Seat> seats;
 
-    private List<Seat> seats;             // 所有座位列表
-
-    // 常量：行标签 A-J、每排座位数
     private static final char[] ROWS = "ABCDEFGHIJ".toCharArray();
     private static final int SEATS_PER_ROW = 7;
-    private static final int MAX_SEATS = ROWS.length * SEATS_PER_ROW; // 总共70个座位
+    private static final int MAX_SEATS = ROWS.length * SEATS_PER_ROW; // total of 70 seats
 
-    /**
-     * 构造器：初始化飞机和座位
-     */
     public Airplane(int airplaneID, String airplaneModel,
                     int businessSeatsNumber, int economySeatsNumber, int crewSeatsNumber) {
-        // 验证基础信息
-        if (airplaneID <= 0) throw new IllegalArgumentException("飞机 ID 必须大于 0");
+        if (airplaneID <= 0) throw new IllegalArgumentException("Airplane ID must be positive");
         if (airplaneModel == null || airplaneModel.trim().isEmpty())
-            throw new IllegalArgumentException("飞机型号不能为空");
+            throw new IllegalArgumentException("Airplane model cannot be empty");
         if (businessSeatsNumber < 0 || economySeatsNumber < 0 || crewSeatsNumber < 0)
-            throw new IllegalArgumentException("座位数不能为负数");
+            throw new IllegalArgumentException("Seat counts cannot be negative");
 
-        // 验证座位总数不超过最大容量
+        // ensure total seats do not exceed capacity
         int totalSeats = businessSeatsNumber + economySeatsNumber + crewSeatsNumber;
         if (totalSeats > MAX_SEATS) {
-            throw new IllegalArgumentException("座位总数不能超过最大容量(" + MAX_SEATS + "个座位)");
+            throw new IllegalArgumentException("Total seats cannot exceed max capacity(" + MAX_SEATS + ")");
         }
 
         this.airplaneID = airplaneID;
@@ -46,7 +39,7 @@ public class Airplane {
         this.economySeatsNumber = economySeatsNumber;
         this.crewSeatsNumber = crewSeatsNumber;
 
-        // 分配座位
+        // assign seats by class
         seats = new ArrayList<>();
         assignSeats(SeatClass.BUSINESS, businessSeatsNumber);
         assignSeats(SeatClass.ECONOMY, economySeatsNumber);
@@ -54,7 +47,7 @@ public class Airplane {
     }
 
     /**
-     * 按照行和号依次分配座位
+     * Assign seats in row/number order
      */
     private void assignSeats(SeatClass type, int count) {
         int assigned = 0;
@@ -62,7 +55,6 @@ public class Airplane {
             for (int num = 1; num <= SEATS_PER_ROW; num++) {
                 if (assigned >= count) return;
 
-                // 检查该位置是否已被分配
                 if (!isSeatTaken(row, num)) {
                     seats.add(new Seat(row, num, type));
                     assigned++;
@@ -72,7 +64,7 @@ public class Airplane {
     }
 
     /**
-     * 检查座位是否已被分配
+     * Check if a seat is already taken
      */
     private boolean isSeatTaken(char row, int number) {
         for (Seat seat : seats) {
@@ -84,8 +76,8 @@ public class Airplane {
     }
 
     /**
-     * 根据行和座位号查找座位
-     * @return 找到的座位，如果不存在返回null
+     * Find a specific seat by row and number
+     * @return the Seat if found, otherwise null
      */
     public Seat findSeat(char row, int number) {
         for (Seat seat : seats) {
@@ -96,7 +88,6 @@ public class Airplane {
         return null;
     }
 
-    // Getter方法
     public int getAirplaneID() {
         return airplaneID;
     }
@@ -122,11 +113,11 @@ public class Airplane {
     }
 
     public List<Seat> getSeats() {
-        return new ArrayList<>(seats); // 返回副本防止外部修改
+        return new ArrayList<>(seats);
     }
 
     /**
-     * 获取特定类型的座位列表
+     * Get seats of a specific class
      */
     public List<Seat> getSeatsByType(SeatClass type) {
         List<Seat> result = new ArrayList<>();
@@ -139,11 +130,11 @@ public class Airplane {
     }
 
     /**
-     * 获取特定行的座位数
+     * Get the number of seats in a specific row
      */
     public int getSeatsInRow(char row) {
         if (row < 'A' || row > 'J') {
-            throw new IllegalArgumentException("行标识必须在A到J之间");
+            throw new IllegalArgumentException("Row must be between A and J");
         }
 
         int count = 0;
@@ -155,7 +146,7 @@ public class Airplane {
         return count;
     }
 
-    // 简单输出飞行信息
+    // Simple output of airplane information
     @Override
     public String toString() {
         return "Airplane[ID=" + airplaneID + ", model=" + airplaneModel +
@@ -165,35 +156,35 @@ public class Airplane {
     }
 
     /**
-     * 根据飞机ID获取飞机信息（静态方法）
-     * @param airplaneID 飞机ID
-     * @return 飞机对象，如果找不到则返回null
+     * Get airplane information by ID (static method)
+     * @param airplaneID Airplane ID
+     * @return Airplane object if found, otherwise null
      */
     public static Airplane getAirplaneInfo(int airplaneID) {
-        // 此方法应该实现查询飞机数据库或集合并返回匹配的飞机
+        // This method should implement querying an airplane database or collection and return matching airplane
         return null;
     }
 
     /**
-     * 座位类别
+     * Seat class types
      */
     public enum SeatClass { BUSINESS, ECONOMY, CREW }
 
     /**
-     * 表示一张座位：行 (A-J), 号 (1-7), 和类别
+     * Represents a seat: row (A-J), number (1-7), and class
      */
     public static class Seat {
-        public final char row;      // 行标签
-        public final int number;    // 座位号
-        public final SeatClass type; // 座位类别
+        public final char row;      // Row label
+        public final int number;    // Seat number
+        public final SeatClass type; // Seat class
 
         public Seat(char row, int number, SeatClass type) {
-            // 验证座位行和号的有效性
+            // Validate seat row and number
             if (row < 'A' || row > 'J') {
-                throw new IllegalArgumentException("行标识必须在A到J之间");
+                throw new IllegalArgumentException("Row must be between A and J");
             }
             if (number < 1 || number > SEATS_PER_ROW) {
-                throw new IllegalArgumentException("座位号必须在1到" + SEATS_PER_ROW + "之间");
+                throw new IllegalArgumentException("Seat number must be between 1 and " + SEATS_PER_ROW);
             }
 
             this.row = row;
