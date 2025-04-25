@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class Person //abstract class Person
 {
     private String firstName;
-    private String secondName;
+    private String lastName;
     private int age;
     private String gender;
 
@@ -16,13 +16,13 @@ public abstract class Person //abstract class Person
 
     public Person(){}
 
-    public Person(String firstName, String secondName, int age, String gender){
+    public Person(String firstName, String lastName, int age, String gender){
         // Validate all fields
         if (firstName == null || firstName.trim().isEmpty()) {
             throw new IllegalArgumentException("First name cannot be empty");
         }
 
-        if (secondName == null || secondName.trim().isEmpty()) {
+        if (lastName == null || lastName.trim().isEmpty()) {
             throw new IllegalArgumentException("Second name cannot be empty");
         }
 
@@ -45,12 +45,12 @@ public abstract class Person //abstract class Person
             throw new IllegalArgumentException("First name must start with a letter");
         }
 
-        if (!secondName.matches("^[a-zA-Z].*")) {
+        if (!lastName.matches("^[a-zA-Z].*")) {
             throw new IllegalArgumentException("Second name must start with a letter");
         }
 
         this.firstName = firstName;
-        this.secondName = secondName;
+        this.lastName = lastName;
         this.age = age;
         this.gender = gender;
     }
@@ -88,8 +88,8 @@ public abstract class Person //abstract class Person
         return firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
     public void setFirstName(String firstName) {
@@ -105,17 +105,17 @@ public abstract class Person //abstract class Person
         this.firstName = firstName;
     }
 
-    public void setSecondName(String secondName) {
-        if (secondName == null || secondName.trim().isEmpty()) {
+    public void setLastName(String lastName) {
+        if (lastName == null || lastName.trim().isEmpty()) {
             throw new IllegalArgumentException("Second name cannot be empty");
         }
 
         // Validate that name cannot start with a digit or symbol
-        if (!secondName.matches("^[a-zA-Z].*")) {
+        if (!lastName.matches("^[a-zA-Z].*")) {
             throw new IllegalArgumentException("Second name must start with a letter");
         }
 
-        this.secondName = secondName;
+        this.lastName = lastName;
     }
 
     @Override
@@ -123,7 +123,7 @@ public abstract class Person //abstract class Person
     {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 '}';

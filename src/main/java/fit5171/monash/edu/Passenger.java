@@ -100,12 +100,12 @@ public class Passenger extends Person
         return super.getFirstName();
     }
 
-    public String getSecondName() {
-        return super.getSecondName();
+    public String getLastName() {
+        return super.getLastName();
     }
 
-    public void setSecondName(String secondName) {
-        super.setSecondName(secondName);
+    public void setLastName(String lastName) {
+        super.setLastName(lastName);
     }
 
     public void setFirstName(String firstName) {
@@ -245,7 +245,7 @@ public class Passenger extends Person
     @Override
     public String toString()
     {
-        return "Passenger{" + " Fullname= "+ super.getFirstName()+" "+super.getSecondName()+
+        return "Passenger{" + " Fullname= "+ super.getFirstName()+" "+super.getLastName()+
                 " ,email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", passport='" + passport +
