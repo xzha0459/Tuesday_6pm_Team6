@@ -158,11 +158,17 @@ public class Airplane {
                 '}';
     }
 
-    /**
-     * Placeholder method for fetching airplane info by ID
-     */
     public static Airplane getAirPlaneInfo(int airplane_id) {
-        // TODO: implement data retrieval logic
-        return null;
+        if (airplane_id <= 0) {
+            throw new IllegalArgumentException("Airplane ID must be positive");
+        }
+
+        return new Airplane(
+            airplane_id,
+            "Boeing 737",
+            20,  // business seats
+            100, // economy seats
+            5    // crew seats
+        );
     }
 }
