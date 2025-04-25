@@ -1,200 +1,168 @@
 package fit5171.monash.edu;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * - 7 seats per row, rows labeled A–J
- * - Business, economy, and crew seats
+ * Airplane class containing airplane information and seat configuration
  */
 public class Airplane {
     private int airplaneID;
     private String airplaneModel;
-    private int businessSeatsNumber;
-    private int economySeatsNumber;
-    private int crewSeatsNumber;
-
-    private List<Seat> seats;
-
-    private static final char[] ROWS = "ABCDEFGHIJ".toCharArray();
-    private static final int SEATS_PER_ROW = 7;
-    private static final int MAX_SEATS = ROWS.length * SEATS_PER_ROW; // total of 70 seats
+    private int businessSeatNumber;
+    private int economySeatNumber;
+    private int crewSeatNumber;
+    private Map<Character, Integer> seatRows;
 
     public Airplane(int airplaneID, String airplaneModel,
-                    int businessSeatsNumber, int economySeatsNumber, int crewSeatsNumber) {
-        if (airplaneID <= 0) throw new IllegalArgumentException("Airplane ID must be positive");
-        if (airplaneModel == null || airplaneModel.trim().isEmpty())
-            throw new IllegalArgumentException("Airplane model cannot be empty");
-        if (businessSeatsNumber < 0 || economySeatsNumber < 0 || crewSeatsNumber < 0)
-            throw new IllegalArgumentException("Seat counts cannot be negative");
+                    int businessSeatNumber, int economySeatNumber, int crewSeatNumber) {
+        // validate airplane ID
+        if (airplaneID <= 0) {
+            throw new IllegalArgumentException("Airplane ID must be positive");
+        }
 
-        // ensure total seats do not exceed capacity
-        int totalSeats = businessSeatsNumber + economySeatsNumber + crewSeatsNumber;
-        if (totalSeats > MAX_SEATS) {
-            throw new IllegalArgumentException("Total seats cannot exceed max capacity(" + MAX_SEATS + ")");
+        // validate airplane model
+        if (airplaneModel == null || airplaneModel.trim().isEmpty()) {
+            throw new IllegalArgumentException("Airplane model cannot be empty");
+        }
+
+        // validate seat counts
+        if (businessSeatNumber < 0) {
+            throw new IllegalArgumentException("Business seat number cannot be negative");
+        }
+        if (economySeatNumber < 0) {
+            throw new IllegalArgumentException("Economy seat number cannot be negative");
+        }
+        if (crewSeatNumber < 0) {
+            throw new IllegalArgumentException("Crew seat number cannot be negative");
         }
 
         this.airplaneID = airplaneID;
-        this.airplaneModel = airplaneModel.trim();
-        this.businessSeatsNumber = businessSeatsNumber;
-        this.economySeatsNumber = economySeatsNumber;
-        this.crewSeatsNumber = crewSeatsNumber;
+        this.airplaneModel = airplaneModel;
+        this.businessSeatNumber = businessSeatNumber;
+        this.economySeatNumber = economySeatNumber;
+        this.crewSeatNumber = crewSeatNumber;
 
-        // assign seats by class
-        seats = new ArrayList<>();
-        assignSeats(SeatClass.BUSINESS, businessSeatsNumber);
-        assignSeats(SeatClass.ECONOMY, economySeatsNumber);
-        assignSeats(SeatClass.CREW, crewSeatsNumber);
+        // initialize seat rows A-J, each row has 7 seats
+        this.seatRows = new HashMap<>();
+        initializeSeatRows();
     }
 
     /**
-     * Assign seats in row/number order
+     * Initialize seat rows (A-J) with 7 seats each
      */
-    private void assignSeats(SeatClass type, int count) {
-        int assigned = 0;
-        for (char row : ROWS) {
-            for (int num = 1; num <= SEATS_PER_ROW; num++) {
-                if (assigned >= count) return;
-
-                if (!isSeatTaken(row, num)) {
-                    seats.add(new Seat(row, num, type));
-                    assigned++;
-                }
-            }
+    private void initializeSeatRows() {
+        for (char row = 'A'; row <= 'J'; row++) {
+            seatRows.put(row, 7);
         }
     }
 
     /**
-     * Check if a seat is already taken
+     * Get number of seats in a specific row (A-J)
      */
-    private boolean isSeatTaken(char row, int number) {
-        for (Seat seat : seats) {
-            if (seat.row == row && seat.number == number) {
-                return true;
-            }
+    public int getSeatsInRow(char row) {
+        if (row < 'A' || row > 'J') {
+            throw new IllegalArgumentException("Row must be between A and J");
         }
-        return false;
+        return seatRows.getOrDefault(row, 0);
     }
 
     /**
-     * Find a specific seat by row and number
-     * @return the Seat if found, otherwise null
+     * Validate if a seat identifier (e.g., "A1", "B3") is valid
      */
-    public Seat findSeat(char row, int number) {
-        for (Seat seat : seats) {
-            if (seat.row == row && seat.number == number) {
-                return seat;
-            }
+    public boolean isValidSeat(String seatId) {
+        if (seatId == null || seatId.length() < 2) {
+            return false;
         }
-        return null;
+        char row = seatId.charAt(0);
+        if (row < 'A' || row > 'J') {
+            return false;
+        }
+        try {
+            int seatNum = Integer.parseInt(seatId.substring(1));
+            return seatNum > 0 && seatNum <= 7;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public int getAirplaneID() {
         return airplaneID;
     }
 
+    public void setAirplaneID(int airplaneID) {
+        if (airplaneID <= 0) {
+            throw new IllegalArgumentException("Airplane ID must be positive");
+        }
+        this.airplaneID = airplaneID;
+    }
+
     public String getAirplaneModel() {
         return airplaneModel;
     }
 
-    public int getBusinessSeatsNumber() {
-        return businessSeatsNumber;
+    public void setAirplaneModel(String airplaneModel) {
+        if (airplaneModel == null || airplaneModel.trim().isEmpty()) {
+            throw new IllegalArgumentException("Airplane model cannot be empty");
+        }
+        this.airplaneModel = airplaneModel;
     }
 
-    public int getEconomySeatsNumber() {
-        return economySeatsNumber;
+    public int getBusinessSeatNumber() {
+        return businessSeatNumber;
     }
 
-    public int getCrewSeatsNumber() {
-        return crewSeatsNumber;
+    public void setBusinessSeatNumber(int businessSeatNumber) {
+        if (businessSeatNumber < 0) {
+            throw new IllegalArgumentException("Business seat number cannot be negative");
+        }
+        this.businessSeatNumber = businessSeatNumber;
     }
 
-    public int getTotalSeatsNumber() {
-        return businessSeatsNumber + economySeatsNumber + crewSeatsNumber;
+    public int getEconomySeatNumber() {
+        return economySeatNumber;
     }
 
-    public List<Seat> getSeats() {
-        return new ArrayList<>(seats);
+    public void setEconomySeatNumber(int economySeatNumber) {
+        if (economySeatNumber < 0) {
+            throw new IllegalArgumentException("Economy seat number cannot be negative");
+        }
+        this.economySeatNumber = economySeatNumber;
+    }
+
+    public int getCrewSeatNumber() {
+        return crewSeatNumber;
+    }
+
+    public void setCrewSeatNumber(int crewSeatNumber) {
+        if (crewSeatNumber < 0) {
+            throw new IllegalArgumentException("Crew seat number cannot be negative");
+        }
+        this.crewSeatNumber = crewSeatNumber;
     }
 
     /**
-     * Get seats of a specific class
+     * Get total passenger seats (business + economy)
      */
-    public List<Seat> getSeatsByType(SeatClass type) {
-        List<Seat> result = new ArrayList<>();
-        for (Seat seat : seats) {
-            if (seat.type == type) {
-                result.add(seat);
-            }
-        }
-        return result;
+    public int getTotalSeats() {
+        return businessSeatNumber + economySeatNumber;
     }
 
-    /**
-     * Get the number of seats in a specific row
-     */
-    public int getSeatsInRow(char row) {
-        if (row < 'A' || row > 'J') {
-            throw new IllegalArgumentException("Row must be between A and J");
-        }
-
-        int count = 0;
-        for (Seat seat : seats) {
-            if (seat.row == row) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    // Simple output of airplane information
     @Override
     public String toString() {
-        return "Airplane[ID=" + airplaneID + ", model=" + airplaneModel +
-                ", business=" + businessSeatsNumber +
-                ", economy=" + economySeatsNumber +
-                ", crew=" + crewSeatsNumber + "]";
+        return "Airplane{" +
+                "model='" + getAirplaneModel() + '\'' +
+                ", businessSeats=" + getBusinessSeatNumber() +
+                ", economySeats=" + getEconomySeatNumber() +
+                ", crewSeats=" + getCrewSeatNumber() +
+                '}';
     }
 
     /**
-     * Get airplane information by ID (static method)
-     * @param airplaneID Airplane ID
-     * @return Airplane object if found, otherwise null
+     * Placeholder method for fetching airplane info by ID
      */
-    public static Airplane getAirplaneInfo(int airplaneID) {
-        // This method should implement querying an airplane database or collection and return matching airplane
+    public static Airplane getAirPlaneInfo(int airplane_id) {
+        // TODO: implement data retrieval logic
         return null;
-    }
-
-    /**
-     * Seat class types
-     */
-    public enum SeatClass { BUSINESS, ECONOMY, CREW }
-
-    /**
-     * Represents a seat: row (A-J), number (1-7), and class
-     */
-    public static class Seat {
-        public final char row;      // Row label
-        public final int number;    // Seat number
-        public final SeatClass type; // Seat class
-
-        public Seat(char row, int number, SeatClass type) {
-            // Validate seat row and number
-            if (row < 'A' || row > 'J') {
-                throw new IllegalArgumentException("Row must be between A and J");
-            }
-            if (number < 1 || number > SEATS_PER_ROW) {
-                throw new IllegalArgumentException("Seat number must be between 1 and " + SEATS_PER_ROW);
-            }
-
-            this.row = row;
-            this.number = number;
-            this.type = type;
-        }
-
-        @Override
-        public String toString() {
-            return row + "" + number + "(" + type + ")";
-        }
     }
 }
