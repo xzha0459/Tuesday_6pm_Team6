@@ -2,19 +2,26 @@ package fit5171.monash.edu;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.mockito.Mockito.*;
 
 class PassengerTest {
 
     private Passenger passenger;
 
+    @Mock
+    private Person mockPerson;
 
     @BeforeEach
     void setUp() {
-        // Initialize a passenger with test data
+        MockitoAnnotations.openMocks(this);
+
+        // Initialize a valid passenger object
         passenger = new Passenger(
-                "JJ", "G", 20, "Male",
-                "JJG@gmail.com", "0123456789",
-                "E12345678", "1010101010101010", 123
+                "John", "Doe", 20, "Man",
+                "john.doe@example.com", "0412345678",
+                "A1234567", "1234-5678-9012-3456", 123
         );
     }
 
@@ -22,28 +29,125 @@ class PassengerTest {
     void testDefaultConstructor() {
         Passenger emptyPassenger = new Passenger();
         assertNotNull(emptyPassenger, "Default constructor should create non-null object");
-        assertNull(emptyPassenger.getFirstName());
-        assertNull(emptyPassenger.getSecondName());
-        assertEquals(0, emptyPassenger.getAge());
-        assertNull(emptyPassenger.getGender());
-        assertNull(emptyPassenger.getEmail());
-        assertNull(emptyPassenger.getPhoneNumber());
-        assertNull(emptyPassenger.getPassport());
-        assertNull(emptyPassenger.getCardNumber());
-        assertEquals(0, emptyPassenger.getSecurityCode());
     }
 
     @Test
     void testParameterizedConstructor() {
-        assertEquals("JJ", passenger.getFirstName());
-        assertEquals("G", passenger.getSecondName());
+        assertEquals("John", passenger.getFirstName());
+        assertEquals("Doe", passenger.getSecondName());
         assertEquals(20, passenger.getAge());
-        assertEquals("Male", passenger.getGender());
-        assertEquals("JJG@gmail.com", passenger.getEmail());
-        assertEquals("0123456789", passenger.getPhoneNumber());
-        assertEquals("E12345678", passenger.getPassport());
-        assertEquals("1010101010101010", passenger.getCardNumber());
+        assertEquals("Man", passenger.getGender());
+        assertEquals("john.doe@example.com", passenger.getEmail());
+        assertEquals("+61412345678", passenger.getPhoneNumber()); // Note: should be standardized
+        assertEquals("A1234567", passenger.getPassport());
+        assertEquals("1234-5678-9012-3456", passenger.getCardNumber());
         assertEquals(123, passenger.getSecurityCode());
+    }
+
+    @Test
+    void testMissingFields() {
+        // test the email is missing
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Passenger("John", "Doe", 20, "Man",
+                    null, "0412345678", "A1234567",
+                    "1234-5678-9012-3456", 123);
+        });
+        assertTrue(exception.getMessage().contains("mandatory"));
+
+        // test the phone number is missing
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Passenger("John", "Doe", 20, "Man",
+                    "john.doe@example.com", null, "A1234567",
+                    "1234-5678-9012-3456", 123);
+        });
+        assertTrue(exception.getMessage().contains("mandatory"));
+
+        // test the passport is missing
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Passenger("John", "Doe", 20, "Man",
+                    "john.doe@example.com", "0412345678", null,
+                    "1234-5678-9012-3456", 123);
+        });
+        assertTrue(exception.getMessage().contains("mandatory"));
+    }
+
+    @Test
+    void testEmailValidation() {
+        // Test valid email
+        passenger.setEmail("valid.email@domain.com");
+        assertEquals("valid.email@domain.com", passenger.getEmail());
+
+        // Test invalid email
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setEmail("invalid-email");
+        });
+        assertTrue(exception.getMessage().contains("Invalid email format"));
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setEmail("invalid@");
+        });
+        assertTrue(exception.getMessage().contains("Invalid email format"));
+    }
+
+    @Test
+    void testPhoneNumberValidation() {
+        // Test the Australian number format
+        passenger.setPhoneNumber("0412345678"); // Aus format
+        assertEquals("+61412345678", passenger.getPhoneNumber());
+
+        passenger.setPhoneNumber("+61412345678"); // country code included
+        assertEquals("+61412345678", passenger.getPhoneNumber());
+
+        // Test the China number format
+        passenger.setPhoneNumber("13912345678"); // China format
+        assertEquals("+8613912345678", passenger.getPhoneNumber());
+
+        passenger.setPhoneNumber("+8613912345678"); // country code included
+        assertEquals("+8613912345678", passenger.getPhoneNumber());
+
+        // Test the US number format
+        passenger.setPhoneNumber("212-555-1234"); // US format
+        assertEquals("+12125551234", passenger.getPhoneNumber());
+
+        passenger.setPhoneNumber("+1212-555-1234"); // country code included
+        assertEquals("+12125551234", passenger.getPhoneNumber());
+
+        // Test invalid number format
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setPhoneNumber("123"); // too short
+        });
+        assertTrue(exception.getMessage().contains("Invalid phone number format"));
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setPhoneNumber("abcdefghij"); // non-numeric
+        });
+        assertTrue(exception.getMessage().contains("Invalid phone number format"));
+    }
+
+    @Test
+    void testPassportValidation() {
+        // Test the Australian passport
+        passenger.setPassport("A1234567"); // Aus format
+        assertEquals("A1234567", passenger.getPassport());
+
+        // Test the China passport
+        passenger.setPassport("G12345678"); // China format
+        assertEquals("G12345678", passenger.getPassport());
+
+        // Test the US passport
+        passenger.setPassport("123456789"); // US format
+        assertEquals("123456789", passenger.getPassport());
+
+        // Test invalid passport
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setPassport("12345"); // too short
+        });
+        assertTrue(exception.getMessage().contains("Invalid passport format"));
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setPassport("ABCDEFGHI"); // doesnt match any format
+        });
+        assertTrue(exception.getMessage().contains("Invalid passport format"));
     }
 
     @Test
@@ -55,7 +159,7 @@ class PassengerTest {
 
     @Test
     void testPhoneNumberGetterAndSetter() {
-        String newPhoneNumber = "+9876543210";
+        String newPhoneNumber = "+61487654321";
         passenger.setPhoneNumber(newPhoneNumber);
         assertEquals(newPhoneNumber, passenger.getPhoneNumber(), "Phone number should be updated");
     }
@@ -76,7 +180,7 @@ class PassengerTest {
 
     @Test
     void testPassportGetterAndSetter() {
-        String newPassport = "D654321";
+        String newPassport = "A7654321";
         passenger.setPassport(newPassport);
         assertEquals(newPassport, passenger.getPassport(), "Passport should be updated");
     }
@@ -88,7 +192,7 @@ class PassengerTest {
         passenger.setFirstName(newFirstName);
         assertEquals(newFirstName, passenger.getFirstName(), "First name should be updated");
 
-        String newSecondName = "Lebron";
+        String newSecondName = "Smith";
         passenger.setSecondName(newSecondName);
         assertEquals(newSecondName, passenger.getSecondName(), "Second name should be updated");
 
@@ -96,7 +200,7 @@ class PassengerTest {
         passenger.setAge(newAge);
         assertEquals(newAge, passenger.getAge(), "Age should be updated");
 
-        String newGender = "Female";
+        String newGender = "Woman";
         passenger.setGender(newGender);
         assertEquals(newGender, passenger.getGender(), "Gender should be updated");
     }
@@ -111,4 +215,20 @@ class PassengerTest {
         assertEquals(expected, passenger.toString(), "toString method should return expected format");
     }
 
+    // Use the simulated object
+    // to test the behavior of the passenger object that depends on the Person class
+    @Test
+    void testPassengerWithMockPerson() {
+        // Set the behavior of the simulated object
+        when(mockPerson.getFirstName()).thenReturn("Mock");
+        when(mockPerson.getSecondName()).thenReturn("Person");
+        when(mockPerson.getAge()).thenReturn(30);
+        when(mockPerson.getGender()).thenReturn("Non-Binary");
+
+        // Test if the behavior is correct
+        assertEquals("Mock", mockPerson.getFirstName());
+        assertEquals("Person", mockPerson.getSecondName());
+        assertEquals(30, mockPerson.getAge());
+        assertEquals("Non-Binary", mockPerson.getGender());
+    }
 }

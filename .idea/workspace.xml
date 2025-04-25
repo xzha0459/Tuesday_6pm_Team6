@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="Update with the latest version">
+    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="Finished TicketSystemTest class">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/TicketSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/TicketSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/FlightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/FlightTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,10 +51,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.FlightCollectionTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.FlightTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TicketSystemTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TicketSystemUnitTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -105,17 +109,7 @@
       <workItem from="1742597653185" duration="18845000" />
       <workItem from="1742641208619" duration="132000" />
       <workItem from="1742734739181" duration="2395000" />
-      <workItem from="1742737391300" duration="1249000" />
-      <workItem from="1742740151582" duration="122000" />
-      <workItem from="1742740399876" duration="311000" />
-      <workItem from="1742860281575" duration="2007000" />
-      <workItem from="1742872021754" duration="1990000" />
-      <workItem from="1742886095866" duration="1412000" />
-      <workItem from="1745403504330" duration="316000" />
-      <workItem from="1745463335633" duration="649000" />
-      <workItem from="1745537027747" duration="524000" />
-      <workItem from="1745538207547" duration="10715000" />
-      <workItem from="1745558067400" duration="8191000" />
+      <workItem from="1742737391300" duration="648000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some errors in TicketSystem class">
       <option name="closed" value="true" />
@@ -141,23 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1742640442633</updated>
     </task>
-    <task id="LOCAL-00004" summary="Update with the latest version">
-      <option name="closed" value="true" />
-      <created>1742738144688</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1742738144688</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Update with the latest version">
-      <option name="closed" value="true" />
-      <created>1742738570866</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1742738570866</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,7 +145,6 @@
     <MESSAGE value="Fixed some errors in TicketSystem class" />
     <MESSAGE value="Finished flight test class" />
     <MESSAGE value="Finished TicketSystemTest class" />
-    <MESSAGE value="Update with the latest version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update with the latest version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished TicketSystemTest class" />
   </component>
 </project>
