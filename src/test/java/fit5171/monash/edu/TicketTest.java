@@ -1,217 +1,220 @@
 package fit5171.monash.edu;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 class TicketTest {
 
     private Ticket ticket;
-    private Flight flight;
-    private Passenger adultPassenger;
-    private Passenger childPassenger;
-    private Passenger seniorPassenger;
-    private Airplane airplane;
+
+    @Mock
+    private Flight mockFlight;
+
+    @Mock
+    private Passenger mockAdultPassenger;
+
+    @Mock
+    private Passenger mockChildPassenger;
+
+    @Mock
+    private Passenger mockSeniorPassenger;
 
     private final int TICKET_ID = 12345;
-    private final int PRICE = 5000;
+    private final int PRICE = 3000;
     private final boolean CLASS_VIP = true;
 
     @BeforeEach
     void setUp() {
-        // Create an airplane with required parameters
-        airplane = new Airplane(
-                1,              // airplaneID
-                "C919",   // airplaneModel
-                24,             // businessSitsNumber
-                200,            // economySitsNumber
-                6               // crewSitsNumber
-        );
+        // Initialize the Mockito annotation
+        MockitoAnnotations.openMocks(this);
 
-        // Create a flight for testing with required parameters
-        flight = new Flight(
-                100,                                         // flight_id
-                "Melbourne",                                 // departTo
-                "Sydney",                                    // departFrom
-                "MEL-SYD101",                                // code
-                "Qantas",                                    // company
-                Timestamp.valueOf(LocalDateTime.now()),      // dateFrom
-                Timestamp.valueOf(LocalDateTime.now().plusHours(2)), // dateTo
-                airplane                                     // airplane
-        );
+        // Set the behavior of the simulated object
+        when(mockAdultPassenger.getAge()).thenReturn(30);
+        when(mockChildPassenger.getAge()).thenReturn(10);
+        when(mockSeniorPassenger.getAge()).thenReturn(65);
 
-        // Create passengers of different age categories
-        adultPassenger = new Passenger("J", "J", 22, "Male",
-                "jj@gmail.com", "0123456789",
-                "AB123456", "1234-5678-9012-3456", 123);
-
-        childPassenger = new Passenger("XT", "Z", 10, "Female",
-                "xtz@gmail.com", "+1987654321",
-                "CD654321", "9876-5432-1098-7654", 456);
-
-        seniorPassenger = new Passenger("TY", "L", 65, "Male",
-                "tyl@gmail.com", "+1122334455",
-                "EF987654", "5678-1234-9012-3456", 789);
-
-        // Initialize with adult passenger by default
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, adultPassenger);
+        // Initialize the ticket object
+        ticket = new Ticket(TICKET_ID, PRICE, mockFlight, CLASS_VIP, mockAdultPassenger);
     }
 
     @Test
     void testDefaultConstructor() {
         Ticket defaultTicket = new Ticket();
-        assertNotNull(defaultTicket, "Default constructor should create non-null object");
-        assertEquals(0, defaultTicket.getTicket_id(), "Default ticket ID should be 0");
-        assertEquals(0, defaultTicket.getPrice(), "Default price should be 0");
-        assertNull(defaultTicket.getFlight(), "Default flight should be null");
-        assertFalse(defaultTicket.getClassVip(), "Default VIP status should be false");
-        assertFalse(defaultTicket.ticketStatus(), "Default ticket status should be false");
-        assertNull(defaultTicket.getPassenger(), "Default passenger should be null");
+        assertNotNull(defaultTicket);
+        assertEquals(0, defaultTicket.getTicket_id());
+        assertEquals(0, defaultTicket.getPrice());
+        assertNull(defaultTicket.getFlight());
+        assertFalse(defaultTicket.getClassVip());
+        assertFalse(defaultTicket.ticketStatus());
+        assertNull(defaultTicket.getPassenger());
     }
 
     @Test
     void testParameterizedConstructor() {
-        assertNotNull(ticket, "Parameterized constructor should create non-null object");
-        assertEquals(TICKET_ID, ticket.getTicket_id(), "Ticket ID should match");
-        assertEquals(PRICE, ticket.getPrice(), "Price should match");
-        assertSame(flight, ticket.getFlight(), "Flight should match");
-        assertEquals(CLASS_VIP, ticket.getClassVip(), "Class VIP status should match");
-        assertFalse(ticket.ticketStatus(), "Ticket status should be false by default");
-        assertSame(adultPassenger, ticket.getPassenger(), "Passenger should match");
+        assertNotNull(ticket);
+        assertEquals(TICKET_ID, ticket.getTicket_id());
+        assertEquals(PRICE, ticket.getPrice());
+        assertSame(mockFlight, ticket.getFlight());
+        assertEquals(CLASS_VIP, ticket.getClassVip());
+        assertFalse(ticket.ticketStatus());
+        assertSame(mockAdultPassenger, ticket.getPassenger());
+    }
+
+    @Test
+    void testConstructorWithNullFlight() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Ticket(TICKET_ID, PRICE, null, CLASS_VIP, mockAdultPassenger);
+        });
+        assertEquals("Flight cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void testConstructorWithNullPassenger() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Ticket(TICKET_ID, PRICE, mockFlight, CLASS_VIP, null);
+        });
+        assertEquals("Passenger cannot be null", exception.getMessage());
+    }
+
+    @Test
+    void testConstructorWithNegativePrice() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Ticket(TICKET_ID, -100, mockFlight, CLASS_VIP, mockAdultPassenger);
+        });
+        assertEquals("Price cannot be negative", exception.getMessage());
+    }
+
+    @Test
+    void testPriceSetterWithNegativeValue() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ticket.setPrice(-100);
+        });
+        assertEquals("Price cannot be negative", exception.getMessage());
     }
 
     @Test
     void testTicketIdGetterAndSetter() {
         int newTicketId = 54321;
         ticket.setTicket_id(newTicketId);
-        assertEquals(newTicketId, ticket.getTicket_id(), "Ticket ID should be updated");
+        assertEquals(newTicketId, ticket.getTicket_id());
     }
 
     @Test
     void testPriceSetterWithAdultPassenger() {
         int newPrice = 6000;
         ticket.setPrice(newPrice);
-        // Adult price with 12% service tax
-        int expectedPrice = (int)(newPrice * 1.12);
-        assertEquals(expectedPrice, ticket.getPrice(), "Price should be updated with service tax for adult");
+        // Verify that the getAge method was called
+        verify(mockAdultPassenger).getAge();
+        // Adult prices are only subject to service tax
+        assertEquals((int)(newPrice * 1.12), ticket.getPrice());
     }
 
     @Test
     void testPriceSetterWithChildPassenger() {
-        ticket.setPassenger(childPassenger);
+        ticket = new Ticket(TICKET_ID, PRICE, mockFlight, CLASS_VIP, mockChildPassenger);
         int newPrice = 6000;
         ticket.setPrice(newPrice);
-        // Child price with 50% discount and then 12% service tax
-        int expectedPrice = (int)((newPrice * 0.5) * 1.12);
-        assertEquals(expectedPrice, ticket.getPrice(), "Price should be 50% discounted and then taxed for child");
+        // Verify that the getAge method was called
+        verify(mockChildPassenger).getAge();
+        // Children's prices apply a 50% discount followed by a 12% service tax
+        int discountedPrice = (int)(newPrice * 0.5);
+        assertEquals((int)(discountedPrice * 1.12), ticket.getPrice());
     }
 
     @Test
     void testPriceSetterWithSeniorPassenger() {
-        ticket.setPassenger(seniorPassenger);
+        ticket = new Ticket(TICKET_ID, PRICE, mockFlight, CLASS_VIP, mockSeniorPassenger);
         int newPrice = 6000;
         ticket.setPrice(newPrice);
-        // Senior price is zero regardless of service tax
-        assertEquals(0, ticket.getPrice(), "Price should be zero for senior passenger");
+        // Verify that the getAge method was called
+        verify(mockSeniorPassenger).getAge();
+        // The price for the elderly should be 0
+        assertEquals(0, ticket.getPrice());
     }
 
     @Test
     void testSaleByAgeForChild() {
-        // Create a fresh ticket to avoid any previous price modifications
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, childPassenger);
-        ticket.saleByAge(childPassenger.getAge());
-        assertEquals((int)(PRICE * 0.5), ticket.getPrice(), "Price should be 50% of original for child");
+        ticket.setPrice(PRICE);
+        ticket.saleByAge(10);
+        assertEquals((int)((PRICE * 0.5) * 1.12), ticket.getPrice());
     }
 
     @Test
     void testSaleByAgeForAdult() {
-        // Create a fresh ticket to avoid any previous price modifications
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, adultPassenger);
-        ticket.saleByAge(adultPassenger.getAge());
-        assertEquals(PRICE, ticket.getPrice(), "Price should remain unchanged for adult");
+        ticket.setPrice(PRICE);
+        ticket.saleByAge(30);
+        assertEquals((int)(PRICE * 1.12), ticket.getPrice());
     }
 
     @Test
     void testSaleByAgeForSenior() {
-        // Create a fresh ticket to avoid any previous price modifications
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, seniorPassenger);
-        ticket.saleByAge(seniorPassenger.getAge());
-        assertEquals(0, ticket.getPrice(), "Price should be zero for senior");
+        ticket.setPrice(PRICE);
+        ticket.saleByAge(65);
+        assertEquals(0, ticket.getPrice());
     }
 
     @Test
     void testServiceTax() {
+        ticket = new Ticket(TICKET_ID, PRICE, mockFlight, CLASS_VIP, mockAdultPassenger);
         int originalPrice = ticket.getPrice();
         ticket.serviceTax();
-        assertEquals((int)(originalPrice * 1.12), ticket.getPrice(), "Price should increase by 12% after service tax");
+        assertEquals((int)(originalPrice * 1.12), ticket.getPrice());
     }
 
     @Test
     void testFlightGetterAndSetter() {
-        // Create a new airplane for the new flight
-        Airplane newAirplane = new Airplane(
-                2,              // airplaneID
-                "Airbus A320",  // airplaneModel
-                16,             // businessSitsNumber
-                150,            // economySitsNumber
-                5               // crewSitsNumber
-        );
+        Flight newMockFlight = mock(Flight.class);
+        ticket.setFlight(newMockFlight);
+        assertSame(newMockFlight, ticket.getFlight());
+    }
 
-        // Create a new flight object with required parameters
-        Flight newFlight = new Flight(
-                202,                                         // flight_id
-                "Brisbane",                                  // departTo
-                "Melbourne",                                 // departFrom
-                "BNE-MEL202",                                // code
-                "Virgin Australia",                          // company
-                Timestamp.valueOf(LocalDateTime.now()),      // dateFrom
-                Timestamp.valueOf(LocalDateTime.now().plusHours(3)), // dateTo
-                newAirplane                                  // airplane
-        );
-        ticket.setFlight(newFlight);
-        assertSame(newFlight, ticket.getFlight(), "Flight should be updated");
+    @Test
+    void testSetNullFlight() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ticket.setFlight(null);
+        });
+        assertEquals("Flight cannot be null", exception.getMessage());
     }
 
     @Test
     void testClassVipGetterAndSetter() {
         boolean newClassVip = false;
         ticket.setClassVip(newClassVip);
-        assertEquals(newClassVip, ticket.getClassVip(), "Class VIP status should be updated");
+        assertEquals(newClassVip, ticket.getClassVip());
     }
 
     @Test
     void testTicketStatusGetterAndSetter() {
         boolean newStatus = true;
         ticket.setTicketStatus(newStatus);
-        assertEquals(newStatus, ticket.ticketStatus(), "Ticket status should be updated");
+        assertEquals(newStatus, ticket.ticketStatus());
     }
 
     @Test
     void testPassengerGetterAndSetter() {
-        Passenger newPassenger = new Passenger("Bronny", "Lebron", 22, "Male",
-                "B.Lebron@gmail.com", "+1357924680",
-                "GH246810", "2468-1357-8024-6913", 135);
-        ticket.setPassenger(newPassenger);
-        assertSame(newPassenger, ticket.getPassenger(), "Passenger should be updated");
+        Passenger newMockPassenger = mock(Passenger.class);
+        ticket.setPassenger(newMockPassenger);
+        assertSame(newMockPassenger, ticket.getPassenger());
     }
 
     @Test
-    void testPriceCalculationFlow() {
-        // Test for adult - only service tax applied
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, adultPassenger);
-        ticket.setPrice(PRICE); // This triggers both saleByAge and serviceTax
-        assertEquals((int)(PRICE * 1.12), ticket.getPrice(), "Adult price should only have service tax applied");
+    void testSetNullPassenger() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ticket.setPassenger(null);
+        });
+        assertEquals("Passenger cannot be null", exception.getMessage());
+    }
 
-        // Test for child - 50% discount then service tax
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, childPassenger);
-        ticket.setPrice(PRICE); // This triggers both saleByAge and serviceTax
-        assertEquals((int)((PRICE * 0.5) * 1.12), ticket.getPrice(), "Child price should have 50% discount then service tax");
+    @Test
+    void testValidateTicket() {
+        assertTrue(ticket.validateTicket());
 
-        // Test for senior - price should be 0 regardless of service tax
-        ticket = new Ticket(TICKET_ID, PRICE, flight, CLASS_VIP, seniorPassenger);
-        ticket.setPrice(PRICE); // This triggers both saleByAge and serviceTax
-        assertEquals(0, ticket.getPrice(), "Senior price should be 0 regardless of service tax");
+        // Test invalid ticket
+        Ticket invalidTicket = new Ticket();
+        assertFalse(invalidTicket.validateTicket());
     }
 
     @Test
@@ -221,6 +224,6 @@ class TicketTest {
                 ticket.getFlight() + '\n' + "Vip status=" + ticket.getClassVip() + '\n' +
                 ticket.getPassenger() + '\n' + "Ticket was purchased=" + ticket.ticketStatus() + "\n}";
 
-        assertEquals(expected, ticket.toString(), "toString should return the expected format");
+        assertEquals(expected, ticket.toString());
     }
 }
