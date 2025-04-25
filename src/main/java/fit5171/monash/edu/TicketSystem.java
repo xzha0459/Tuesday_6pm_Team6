@@ -157,7 +157,7 @@ public class TicketSystem {
             passenger.setFirstName(this.in.nextLine());
 
             System.out.println("Enter your Second name:");
-            passenger.setSecondName(this.in.nextLine());
+            passenger.setLastName(this.in.nextLine());
 
             System.out.println("Enter your age:");
             passenger.setAge(this.in.nextInt());

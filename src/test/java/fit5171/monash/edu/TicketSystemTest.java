@@ -174,8 +174,8 @@ public class TicketSystemTest {
 
             String output = outputStream.toString();
             assertTrue(output.contains("Your bill:"));
-            assertEquals(9, airplane.getEconomySitsNumber());
-            assertEquals(5, airplane.getBusinessSitsNumber());
+            assertEquals(9, airplane.getEconomySeatNumber());
+            assertEquals(5, airplane.getBusinessSeatNumber());
         }
     }
 
@@ -222,7 +222,7 @@ public class TicketSystemTest {
             String output = outputStream.toString();
 
             assertTrue(output.contains("Your bill:"));
-            assertEquals(7, mockAirplane.getEconomySitsNumber());
+            assertEquals(7, mockAirplane.getEconomySeatNumber());
         }
     }
 

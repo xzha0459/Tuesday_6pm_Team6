@@ -44,11 +44,11 @@ public class Passenger extends Person
 
     public Passenger(){}
 
-    public Passenger(String firstName, String secondName, int age, String gender,
+    public Passenger(String firstName, String lastName, int age, String gender,
                      String email, String phoneNumber, String passport,
                      String cardNumber, int securityCode)
     {
-        super(firstName, secondName, age, gender);
+        super(firstName, lastName, age, gender);
 
         // Verify all fields
         if(email == null || phoneNumber == null || passport == null ||

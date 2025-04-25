@@ -224,9 +224,23 @@ public class AirplaneTest {
     }
 
     @Test
-    @DisplayName("getAirPlaneInfo static method returns null stub")
+    @DisplayName("getAirPlaneInfo static method returns sample airplane")
     void testGetAirPlaneInfo() {
         Airplane result = Airplane.getAirPlaneInfo(1);
-        assertNull(result);
+        assertNotNull(result);
+        assertEquals(1, result.getAirplaneID());
+        assertEquals("Boeing 737", result.getAirplaneModel());
+        assertEquals(20, result.getBusinessSeatNumber());
+        assertEquals(100, result.getEconomySeatNumber());
+        assertEquals(5, result.getCrewSeatNumber());
+    }
+
+    @Test
+    @DisplayName("getAirPlaneInfo with invalid ID should throw exception")
+    void testGetAirPlaneInfoInvalidId() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                Airplane.getAirPlaneInfo(0)
+        );
+        assertTrue(exception.getMessage().contains("Airplane ID must be positive"));
     }
 }
