@@ -66,15 +66,15 @@ public class TicketSystem {
         ticket.setPrice(ticket.getPrice());
 
         if (ticket.getClassVip()) {
-            if (airplane.getBusinessSitsNumber() <= 0) {
+            if (airplane.getBusinessSeatNumber() <= 0) {
                 throw new IllegalStateException("No business class seats available");
             }
-            airplane.setBusinessSitsNumber(airplane.getBusinessSitsNumber() - 1);
+            airplane.setBusinessSeatNumber(airplane.getBusinessSeatNumber() - 1);
         } else {
-            if (airplane.getEconomySitsNumber() <= 0) {
+            if (airplane.getEconomySeatNumber() <= 0) {
                 throw new IllegalStateException("No economy seats available");
             }
-            airplane.setEconomySitsNumber(airplane.getEconomySitsNumber() - 1);
+            airplane.setEconomySeatNumber(airplane.getEconomySeatNumber() - 1);
         }
 
         System.out.println("Your bill: " + ticket.getPrice() + "\n");
@@ -157,7 +157,7 @@ public class TicketSystem {
             passenger.setFirstName(this.in.nextLine());
 
             System.out.println("Enter your Second name:");
-            passenger.setSecondName(this.in.nextLine());
+            passenger.setLastName(this.in.nextLine());
 
             System.out.println("Enter your age:");
             passenger.setAge(this.in.nextInt());
@@ -196,15 +196,15 @@ public class TicketSystem {
 
     private void updateSeat(Airplane a, Ticket t) {
         if (t.getClassVip()) {
-            if (a.getBusinessSitsNumber() <= 0) {
+            if (a.getBusinessSeatNumber() <= 0) {
                 throw new IllegalStateException("No business class seats available");
             }
-            a.setBusinessSitsNumber(a.getBusinessSitsNumber() - 1);
+            a.setBusinessSeatNumber(a.getBusinessSeatNumber() - 1);
         } else {
-            if (a.getEconomySitsNumber() <= 0) {
+            if (a.getEconomySeatNumber() <= 0) {
                 throw new IllegalStateException("No economy seats available");
             }
-            a.setEconomySitsNumber(a.getEconomySitsNumber() - 1);
+            a.setEconomySeatNumber(a.getEconomySeatNumber() - 1);
         }
     }
 }

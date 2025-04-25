@@ -44,11 +44,11 @@ public class Passenger extends Person
 
     public Passenger(){}
 
-    public Passenger(String firstName, String secondName, int age, String gender,
+    public Passenger(String firstName, String lastName, int age, String gender,
                      String email, String phoneNumber, String passport,
                      String cardNumber, int securityCode)
     {
-        super(firstName, secondName, age, gender);
+        super(firstName, lastName, age, gender);
 
         // Verify all fields
         if(email == null || phoneNumber == null || passport == null ||
@@ -100,12 +100,12 @@ public class Passenger extends Person
         return super.getFirstName();
     }
 
-    public String getSecondName() {
-        return super.getSecondName();
+    public String getLastName() {
+        return super.getLastName();
     }
 
-    public void setSecondName(String secondName) {
-        super.setSecondName(secondName);
+    public void setLastName(String lastName) {
+        super.setLastName(lastName);
     }
 
     public void setFirstName(String firstName) {
@@ -245,7 +245,7 @@ public class Passenger extends Person
     @Override
     public String toString()
     {
-        return "Passenger{" + " Fullname= "+ super.getFirstName()+" "+super.getSecondName()+
+        return "Passenger{" + " Fullname= "+ super.getFirstName()+" "+super.getLastName()+
                 " ,email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", passport='" + passport +

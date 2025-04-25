@@ -164,11 +164,11 @@ public class Airplane {
         }
 
         return new Airplane(
-            airplane_id,
-            "Boeing 737",
-            20,  // business seats
-            100, // economy seats
-            5    // crew seats
+                airplane_id,
+                "Boeing 737",
+                20,  // business seats
+                100, // economy seats
+                5    // crew seats
         );
     }
 }
