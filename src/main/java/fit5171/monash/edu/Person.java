@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
+
+
 public abstract class Person {
     private static final Map<String, String> ALLOWED_GENDERS;
     static {
@@ -15,12 +17,16 @@ public abstract class Person {
         genders.put("Prefer not to say", "Prefer not to say");
         genders.put("Other", "Other");
         ALLOWED_GENDERS = Collections.unmodifiableMap(genders);
+
+
     }
 
     private String firstName;
     private String lastName;
     private int age;
     private String gender;
+
+    public Person() {}
 
     /**
      * Constructs a Person object and validates all fields.
