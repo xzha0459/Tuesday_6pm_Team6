@@ -1,3 +1,4 @@
+
 package fit5171.monash.edu;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,8 +20,8 @@ class PassengerTest {
 
         // Initialize a valid passenger object
         passenger = new Passenger(
-                "John", "Doe", 20, "Man",
-                "john.doe@example.com", "0412345678",
+                "wick", "john", 20, "Man",
+                "wick.j@example.com", "0412345678",
                 "A1234567", "1234-5678-9012-3456", 123
         );
     }
@@ -33,11 +34,11 @@ class PassengerTest {
 
     @Test
     void testParameterizedConstructor() {
-        assertEquals("John", passenger.getFirstName());
-        assertEquals("Doe", passenger.getSecondName());
+        assertEquals("wick", passenger.getFirstName());
+        assertEquals("john", passenger.getLastName());
         assertEquals(20, passenger.getAge());
         assertEquals("Man", passenger.getGender());
-        assertEquals("john.doe@example.com", passenger.getEmail());
+        assertEquals("wick.j@example.com", passenger.getEmail());
         assertEquals("+61412345678", passenger.getPhoneNumber()); // Note: should be standardized
         assertEquals("A1234567", passenger.getPassport());
         assertEquals("1234-5678-9012-3456", passenger.getCardNumber());
@@ -193,8 +194,8 @@ class PassengerTest {
         assertEquals(newFirstName, passenger.getFirstName(), "First name should be updated");
 
         String newSecondName = "Smith";
-        passenger.setSecondName(newSecondName);
-        assertEquals(newSecondName, passenger.getSecondName(), "Second name should be updated");
+        passenger.setLastName(newSecondName);
+        assertEquals(newSecondName, passenger.getLastName(), "Second name should be updated");
 
         int newAge = 25;
         passenger.setAge(newAge);
@@ -207,7 +208,7 @@ class PassengerTest {
 
     @Test
     void testToString() {
-        String expected = "Passenger{" + " Fullname= "+ passenger.getFirstName() +" "+ passenger.getSecondName() +
+        String expected = "Passenger{" + " Fullname= "+ passenger.getFirstName() +" "+ passenger.getLastName() +
                 " ,email='" + passenger.getEmail() + '\'' +
                 ", phoneNumber='" + passenger.getPhoneNumber() + '\'' +
                 ", passport='" + passenger.getPassport() +
@@ -221,13 +222,13 @@ class PassengerTest {
     void testPassengerWithMockPerson() {
         // Set the behavior of the simulated object
         when(mockPerson.getFirstName()).thenReturn("Mock");
-        when(mockPerson.getSecondName()).thenReturn("Person");
+        when(mockPerson.getLastName()).thenReturn("Person");
         when(mockPerson.getAge()).thenReturn(30);
         when(mockPerson.getGender()).thenReturn("Non-Binary");
 
         // Test if the behavior is correct
         assertEquals("Mock", mockPerson.getFirstName());
-        assertEquals("Person", mockPerson.getSecondName());
+        assertEquals("Person", mockPerson.getLastName());
         assertEquals(30, mockPerson.getAge());
         assertEquals("Non-Binary", mockPerson.getGender());
     }
