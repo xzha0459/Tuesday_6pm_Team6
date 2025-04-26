@@ -1,135 +1,189 @@
 package fit5171.monash.edu;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Unit tests for the Person class validating constructor and setter behaviors.
+ * Unit tests for Person class
+ * Since Person is an abstract class, we use a concrete subclass for testing
  */
 class PersonTest {
 
-    /**
-     * A concrete subclass for testing the abstract Person class.
-     */
-    private static class TestPerson extends Person {
+    // Create a concrete subclass of Person for testing
+    static class TestPerson extends Person {
         public TestPerson(String firstName, String lastName, int age, String gender) {
             super(firstName, lastName, age, gender);
         }
-    }
 
-    @Nested
-    @DisplayName("Constructor and Getter Tests")
-    class ConstructorAndGetters {
-
-        @Test
-        @DisplayName("Valid constructor should set all fields correctly")
-        void validConstructorSetsFields() {
-            TestPerson person = new TestPerson("Alice", "Smith", 25, "Woman");
-            assertEquals("Alice", person.getFirstName());
-            assertEquals("Smith", person.getLastName());
-            assertEquals(25, person.getAge());
-            assertEquals("Woman", person.getGender());
-        }
-
-        @Test
-        @DisplayName("toString should include all fields")
-        void toStringIncludesFields() {
-            TestPerson person = new TestPerson("Bob", "Brown", 40, "Man");
-            String str = person.toString();
-            assertTrue(str.contains("firstName='Bob'"));
-            assertTrue(str.contains("lastName='Brown'"));
-            assertTrue(str.contains("age=40"));
-            assertTrue(str.contains("gender='Man'"));
+        // Empty constructor for testing setter methods
+        public TestPerson() {
+            super();
         }
     }
 
-    @Nested
-    @DisplayName("Validation Tests for First and Last Name")
-    class NameValidation {
+    @Test
+    @DisplayName("Test creating valid Person object")
+    void testCreateValidPerson() {
+        TestPerson person = new TestPerson("John", "Smith", 30, "Man");
 
-        @Test
-        @DisplayName("Null first name should throw exception")
-        void nullFirstNameThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson(null, "Doe", 30, "Other"));
-            assertEquals("First name cannot be empty", ex.getMessage());
-        }
-
-        @Test
-        @DisplayName("First name with non-letter characters should throw")
-        void invalidFirstNameThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("123John", "Doe", 30, "Other"));
-            assertEquals("First name must contain only letters", ex.getMessage());
-        }
-
-        @Test
-        @DisplayName("Null last name should throw exception")
-        void nullLastNameThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", null, 30, "Other"));
-            assertEquals("Last name cannot be empty", ex.getMessage());
-        }
-
-        @Test
-        @DisplayName("Last name with non-letter characters should throw")
-        void invalidLastNameThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", "Doe!", 30, "Other"));
-            assertEquals("Last name must contain only letters", ex.getMessage());
-        }
+        assertEquals("John", person.getFirstName());
+        assertEquals("Smith", person.getLastName());
+        assertEquals(30, person.getAge());
+        assertEquals("Man", person.getGender());
     }
 
-    @Nested
-    @DisplayName("Age Validation Tests")
-    class AgeValidation {
+    // ========== Test constructor validation ==========
 
-        @Test
-        @DisplayName("Zero age should throw exception")
-        void zeroAgeThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", "Doe", 0, "Non-Binary"));
-            assertEquals("Age must be a positive integer", ex.getMessage());
-        }
+    @Test
+    @DisplayName("Test empty/null fields in constructor - should throw exceptions")
+    void testEmptyFields() {
+        // Test empty first name
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("", "Smith", 30, "Man");
+        });
+        assertTrue(exception1.getMessage().contains("First name cannot be empty"));
 
-        @Test
-        @DisplayName("Negative age should throw exception")
-        void negativeAgeThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", "Doe", -5, "Non-Binary"));
-            assertEquals("Age must be a positive integer", ex.getMessage());
-        }
+        // Test null first name
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson(null, "Smith", 30, "Man");
+        });
+        assertTrue(exception2.getMessage().contains("First name cannot be empty"));
+
+        // Test empty last name
+        Exception exception3 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", "", 30, "Man");
+        });
+        assertTrue(exception3.getMessage().contains("Last name cannot be empty"));
+
+        // Test null last name
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", null, 30, "Man");
+        });
+        assertTrue(exception4.getMessage().contains("Last name cannot be empty"));
+
+        // Test empty gender
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", "Smith", 30, "");
+        });
+        assertTrue(exception5.getMessage().contains("Gender cannot be empty"));
+
+        // Test null gender
+        Exception exception6 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", "Smith", 30, null);
+        });
+        assertTrue(exception6.getMessage().contains("Gender cannot be empty"));
     }
 
-    @Nested
-    @DisplayName("Gender Validation Tests")
-    class GenderValidation {
+    @Test
+    @DisplayName("Test age validation in constructor")
+    void testAgeValidation() {
+        // Test zero age
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", "Smith", 0, "Man");
+        });
+        assertTrue(exception1.getMessage().contains("Age must be a positive number"));
 
-        @Test
-        @DisplayName("Null gender should throw exception")
-        void nullGenderThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", "Doe", 30, null));
-            assertEquals("Gender cannot be empty", ex.getMessage());
-        }
+        // Test negative age
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", "Smith", -25, "Man");
+        });
+        assertTrue(exception2.getMessage().contains("Age must be a positive number"));
+    }
 
-        @Test
-        @DisplayName("Blank gender should throw exception")
-        void blankGenderThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", "Doe", 30, "  "));
-            assertEquals("Gender cannot be empty", ex.getMessage());
-        }
+    // ========== Test gender validation ==========
 
-        @Test
-        @DisplayName("Unsupported gender should throw exception")
-        void invalidGenderThrows() {
-            IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                    () -> new TestPerson("John", "Doe", 30, "Alien"));
-            assertTrue(ex.getMessage().startsWith("Gender must be one of:"));
-        }
+    @ParameterizedTest
+    @ValueSource(strings = {"Woman", "Man", "Non-Binary", "Prefer not to say", "Other"})
+    @DisplayName("Test valid gender options")
+    void testValidGenders(String gender) {
+        TestPerson person = new TestPerson("John", "Smith", 30, gender);
+        assertEquals(gender, person.getGender());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Male", "Female", "Unknown"})
+    @DisplayName("Test invalid gender options")
+    void testInvalidGenders(String gender) {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson("John", "Smith", 30, gender);
+        });
+        assertTrue(exception.getMessage().contains("Gender must be one of the following options"));
+    }
+
+    // ========== Test name format validation ==========
+
+    @ParameterizedTest
+    @CsvSource({
+            "1John, Smith",
+            "John, 2Smith",
+            "#John, Smith",
+            "John, $Smith"
+    })
+    @DisplayName("Test names starting with digit or symbol")
+    void testNamesStartingWithDigitOrSymbol(String firstName, String lastName) {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new TestPerson(firstName, lastName, 30, "Man");
+        });
+        assertTrue(exception.getMessage().contains("cannot start with a digit or symbol"));
+    }
+
+    // ========== Test setter methods ==========
+
+    @Test
+    @DisplayName("Test setter validation")
+    void testSetterValidation() {
+        TestPerson person = new TestPerson("John", "Smith", 30, "Man");
+
+        // Test firstName setter
+        Exception ex1 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setFirstName("");
+        });
+        assertTrue(ex1.getMessage().contains("First name cannot be empty"));
+
+        Exception ex2 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setFirstName("1John");
+        });
+        assertTrue(ex2.getMessage().contains("First name cannot start with a digit or symbol"));
+
+        // Test lastName setter
+        Exception ex3 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setLastName("");
+        });
+        assertTrue(ex3.getMessage().contains("Last name cannot be empty"));
+
+        Exception ex4 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setLastName("#Smith");
+        });
+        assertTrue(ex4.getMessage().contains("Last name cannot start with a digit or symbol"));
+
+        // Test age setter
+        Exception ex5 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setAge(-5);
+        });
+        assertTrue(ex5.getMessage().contains("Age must be a positive number"));
+
+        // Test gender setter
+        Exception ex6 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setGender("");
+        });
+        assertTrue(ex6.getMessage().contains("Gender cannot be empty"));
+
+        Exception ex7 = assertThrows(IllegalArgumentException.class, () -> {
+            person.setGender("Invalid");
+        });
+        assertTrue(ex7.getMessage().contains("Gender must be one of the following options"));
+    }
+
+    @Test
+    @DisplayName("Test toString method")
+    void testToString() {
+        TestPerson person = new TestPerson("John", "Smith", 30, "Man");
+        String expected = "Person{firstName='John', lastName='Smith', age=30, gender='Man'}";
+        assertEquals(expected, person.toString());
     }
 }
