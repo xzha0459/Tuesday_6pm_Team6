@@ -120,10 +120,10 @@ public class TicketSystemTest {
                     "John",
                     "Smith",
                     "30",
-                    "Male",
+                    "Man",
                     "john@example.com",
-                    "+012345678",
-                    "AB123456",
+                    "+61412345678",
+                    "A1234567",
                     "0"
             ) + "\n";
             System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -167,7 +167,7 @@ public class TicketSystemTest {
             mockAirplane.when(() -> Airplane.getAirPlaneInfo(200)).thenReturn(airplane);
 
             String simulatedInput =
-                    "Jerry\nSmith\n40\nMale\njohn@example.com\n+123456789\nAB123456\n1\n1234567890123456\n123\n";
+                    "Jerry\nSmith\n40\nMan\njohn@example.com\n+61412345678\nA1234567\n1\n1234567890123456\n123\n";
             System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
             ticketSystem.buyTicket(validTicketId);
@@ -181,17 +181,14 @@ public class TicketSystemTest {
 
     @Test
     void integrationTestBuyTicket_WithRealObjects() throws Exception {
-        // 手动构造 airplane
         Airplane mockAirplane = new Airplane(111, "MockPlane", 4, 8, 2);
 
-        // 手动构造 flight
         Flight flight = new Flight();
         flight.setFlightID(10);
         flight.setDepartFrom("Sydney");
         flight.setDepartTo("Melbourne");
         flight.setAirplane(mockAirplane);
 
-        // 构造 ticket
         Ticket ticket = new Ticket();
         ticket.setTicket_id(99);
         ticket.setFlight(flight);
@@ -207,11 +204,10 @@ public class TicketSystemTest {
         try (MockedStatic<Airplane> airplaneStatic = Mockito.mockStatic(Airplane.class)) {
             airplaneStatic.when(() -> Airplane.getAirPlaneInfo(111)).thenReturn(mockAirplane);
 
-            // 输入流必须完全匹配 readPassengerInfo() + readPaymentInfo()
             String simulatedInput = String.join("\n",
-                    "John", "Smith", "30", "Male", "john@example.com", "+123456789", "AB123456", // 乘客
-                    "1", // confirm purchase
-                    "4444333322221111", "123" // payment
+                    "John", "Smith", "30", "Man", "john@example.com", "+61412345678", "A1234567",
+                    "1",
+                    "4444333322221111", "123"
             ) + "\n";
 
             System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
