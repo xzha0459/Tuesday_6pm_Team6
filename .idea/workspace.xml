@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="modify&#10;-Person.java">
+    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="modify&#10;-Airplane.java&#10;-AirplaneTest.java&#10;-Passenger.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Airplane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Airplane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/AirplaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/AirplaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Airplane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Airplane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Passenger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Passenger.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +30,12 @@
     &quot;assignee&quot;: &quot;tlii0106&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/xzha0459/Tuesday_6pm_Team6.git&quot;,
-    &quot;accountId&quot;: &quot;9fb3e510-ff41-4e14-93e9-efde2f540e51&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/xzha0459/Tuesday_6pm_Team6.git",
+    "accountId": "70486376-558c-48e2-a863-35d748b626f9"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -69,7 +66,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -99,7 +96,7 @@
       </set>
     </attachedChunks>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="" />
@@ -113,6 +110,7 @@
       <workItem from="1742641208619" duration="132000" />
       <workItem from="1742734739181" duration="2395000" />
       <workItem from="1742737391300" duration="648000" />
+      <workItem from="1745655756914" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some errors in TicketSystem class">
       <option name="closed" value="true" />
@@ -162,11 +160,42 @@
       <option name="project" value="LOCAL" />
       <updated>1745592555492</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modify&#10;-Airplane.java&#10;-AirplaneTest.java&#10;-Passenger.java">
+      <option name="closed" value="true" />
+      <created>1745593431974</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745593431974</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/tlii0106" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed some errors in TicketSystem class" />
@@ -175,6 +204,11 @@
     <MESSAGE value="modify&#10;-Passenger.java&#10;-PassengerTest.java&#10;-Person.java" />
     <MESSAGE value="modify&#10;-TicketSystem.java&#10;-TicketSystemTest.java" />
     <MESSAGE value="modify&#10;-Person.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify&#10;-Person.java" />
+    <MESSAGE value="modify&#10;-Airplane.java&#10;-AirplaneTest.java&#10;-Passenger.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify&#10;-Airplane.java&#10;-AirplaneTest.java&#10;-Passenger.java" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
