@@ -3,6 +3,9 @@ package fit5171.monash.edu;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Base Person class, provides basic person information
+ */
 public abstract class Person //abstract class Person
 {
     private String firstName;
@@ -14,8 +17,20 @@ public abstract class Person //abstract class Person
     private static final List<String> VALID_GENDERS = Arrays.asList(
             "Woman", "Man", "Non-Binary", "Prefer not to say", "Other");
 
+    /**
+     * Empty constructor, only for subclass inheritance
+     */
     protected Person(){}
 
+    /**
+     * Create a person object with all necessary validations
+     *
+     * @param firstName First name
+     * @param lastName Last name
+     * @param age Age
+     * @param gender Gender
+     * @throws IllegalArgumentException If any parameter is invalid
+     */
     public Person(String firstName, String lastName, int age, String gender){
         // Validate all fields are not empty
         if (firstName == null || firstName.trim().isEmpty()) {
@@ -54,6 +69,12 @@ public abstract class Person //abstract class Person
         this.gender = gender;
     }
 
+    /**
+     * Validate if the name format is correct (can only start with a letter)
+     *
+     * @param name Name to validate
+     * @return true if name format is correct, otherwise false
+     */
     private boolean isValidName(String name) {
         if (name == null || name.isEmpty()) {
             return false;
@@ -63,6 +84,12 @@ public abstract class Person //abstract class Person
         return Character.isLetter(firstChar);
     }
 
+    /**
+     * Validate if the gender is a valid option
+     *
+     * @param gender Gender to validate
+     * @return true if gender is a valid option, otherwise false
+     */
     private boolean isValidGender(String gender) {
         return VALID_GENDERS.contains(gender);
     }

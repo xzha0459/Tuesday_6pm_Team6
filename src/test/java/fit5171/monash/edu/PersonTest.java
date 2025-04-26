@@ -8,6 +8,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for Person class
+ * Since Person is an abstract class, we use a concrete subclass for testing
+ */
 class PersonTest {
 
     // Create a concrete subclass of Person for testing
@@ -16,6 +20,7 @@ class PersonTest {
             super(firstName, lastName, age, gender);
         }
 
+        // Empty constructor for testing setter methods
         public TestPerson() {
             super();
         }
@@ -32,6 +37,7 @@ class PersonTest {
         assertEquals("Man", person.getGender());
     }
 
+    // ========== Test constructor validation ==========
 
     @Test
     @DisplayName("Test empty/null fields in constructor - should throw exceptions")
