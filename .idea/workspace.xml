@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="modify&#10;-Person.java">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Airplane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Airplane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fit5171/monash/edu/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/AirplaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/AirplaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Airplane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Airplane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Passenger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Passenger.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,7 @@
     "JUnit.TicketSystemTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "jgao0062",
+    "git-widget-placeholder": "tlii0106",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/Tuesday_6pm_Team6_2",
     "node.js.detected.package.eslint": "true",
