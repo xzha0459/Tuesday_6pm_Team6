@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="modify&#10;-Person.java">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+    <list default="true" id="a881b073-1023-4ab5-bd5f-18e79144a258" name="Changes" comment="Complete all tasks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fit5171/monash/edu/TicketSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Passenger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fit5171/monash/edu/Passenger.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,31 +44,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.AirplaneTest.executor": "Run",
-    "JUnit.FlightCollectionTest.executor": "Run",
-    "JUnit.FlightTest.executor": "Run",
-    "JUnit.PassengerTest.executor": "Run",
-    "JUnit.TicketCollectionTest.executor": "Run",
-    "JUnit.TicketSystemTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "tlii0106",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/Tuesday_6pm_Team6_2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.AirplaneTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightCollectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlightTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PassengerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TicketCollectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TicketSystemTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tlii0106&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/IdeaProjects/Tuesday_6pm_Team6_2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="fit5171.monash.edu" />
@@ -112,6 +109,7 @@
       <workItem from="1742641208619" duration="132000" />
       <workItem from="1742734739181" duration="2395000" />
       <workItem from="1742737391300" duration="648000" />
+      <workItem from="1745627304474" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed some errors in TicketSystem class">
       <option name="closed" value="true" />
@@ -161,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745592555492</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Complete all tasks">
+      <option name="closed" value="true" />
+      <created>1745626955375</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745626955375</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +180,7 @@
     <MESSAGE value="modify&#10;-Passenger.java&#10;-PassengerTest.java&#10;-Person.java" />
     <MESSAGE value="modify&#10;-TicketSystem.java&#10;-TicketSystemTest.java" />
     <MESSAGE value="modify&#10;-Person.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify&#10;-Person.java" />
+    <MESSAGE value="Complete all tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete all tasks" />
   </component>
 </project>
